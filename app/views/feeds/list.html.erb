@@ -1,20 +1,11 @@
 <h2>Feeds</h2>
 <%= link_to 'Edit Sources', feed_sources_path%>
 <ul>
-<%@entry.each do |feed_info|%>
- <% feed_url = feed_info.first%>
- <% feed_data = feed_info.last%>
- <li>
- <%= link_to "#{feed_data.title.sanitize} - [#{feed_url}]", "#{feed_data.url}",:target => "_blank" %>
- <ul>
- <% feed_data.entries.sort{|p,n| n.published <=> p.published}.each do |feed| %>
- <li>
- <%= link_to "#{feed.title.sanitize}", "#{feed.url}",:target => "_blank" %>
- <%=feed.author%>   
- <%#=feed.published%> 
- </li>
+  <%@entry.each do |feed|%>
+    <li>
+     <%= link_to "#{feed.title.sanitize}", "#{feed.url}",:target => "_blank" %>
+     <%#=feed.author%>   
+     <%#=feed.published%> 
+    </li>
  <% end %>
- </ul>
- </li>
-<%end%>
 </ul>
